@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+  </style>
+
+<body>
+
+  <div class="wrapper flex_box">
+    <form>
+      <div class="input">
+        <label>
+          ADSR parameters
+        </label>
+        <input class="Attack" placeholder="Attack" type="text">
+        <input class="Decay" placeholder="Decay" type="text">
+        <input class="Sustain" placeholder="Sustain" type="text">
+        <input class="Release" placeholder="Release" type="text">
+      </div>
+      
+      <select name="Voices" id="Voices">
+        <option value="Voice1">Voice1</option>
+        <option value="Voice1">Voice2</option>
+        <option value="Voice1">Voice3</option>
+      </select>
+      
+      <select name="Waves" id="Swaves">
+        <option value="65">Square</option>
+        <option value="17">Triangle</option>
+        <option value="33">Sawtooth</option>
+        <option value="129">Noise</option>
+      </select>
+
+      <select name="note" id="noteselector">
+        <option value="0">c-0</option>
+        <option value="1">c#-0</option>
+        <option value="2">D-0</option>
+        <option value="3">D#-0</option>
+        <option value="4">E-0</option>
+        <option value="5">F-0</option>
+        <option value="6">F#-0</option>
+        <option value="7">G-0</option>
+        <option value="8">G#-0</option>
+        <option value="9">A-0</option>
+        <option value="10">A#-0</option>
+        <option value="11">B-0</option>
+        <option value="16">C-1</option>
+        <option value="17">C#-1</option>
+        <option value="18">D-1</option>
+        <option value="19">D#-1</option>
+        <option value="20">E-1</option>
+        <option value="21">F-1</option>
+        <option value="22">F#-1</option>
+        <option value="23">G-1</option>
+        <option value="24">G#-1</option>
+        <option value="25">A-1</option>
+        <option value="26">A#-0</option>
+        <option value="27">B-1</option>
+        <option value="32">C-2</option>
+        <option value="33">C#-2</option>
+        <option value="34">D-2</option>
+        <option value="35">D#-2</option>
+        <option value="36">E-2</option>
+        <option value="37">F-2</option>
+        <option value="38">F#-2</option>
+        <option value="39">G-2</option>
+        <option value="40">G#-2</option>
+        <option value="41">A-2</option>
+        <option value="42">A#-2</option>
+        <option value="43">B-2</option>
+        <option value="48">C-3</option>
+        <option value="49">C#-3</option>
+        <option value="50">D-3</option>
+        <option value="51">D#-3</option>
+        <option value="52">E-3</option>
+        <option value="53">F-3</option>
+        <option value="54">F#-3</option>
+        <option value="55">G-3</option>
+        <option value="56">G#-3</option>
+        <option value="57">A-3</option>
+        <option value="58">A#-3</option>
+        <option value="59">B-3</option>
+        <option value="64">C-4</option>
+        <option value="65">C#-4</option>
+        <option value="66">D-4</option>
+        <option value="67">C#-4</option>
+        <option value="68">E-4</option>
+        <option value="69">F-4</option>
+        <option value="70">F#-4</option>
+        <option value="71">G-4</option>
+        <option value="72">G#-4</option>
+        <option value="73">A-4</option>
+        <option value="74">A#-4</option>
+        <option value="75">B-4</option>
+        <option value="80">C-5</option>
+        <option value="81">C#-5</option>
+
+      </select>
+
+
+      <div class="button_wrapper">
+        <button type='button'>
+          submit
+        </button>
+      </div>
+    </form>
+  </div>
+  
+  <div class="cover"></div>
+
+  <div class="sign">
+    by ivo mallee
+  </div>
+  <Script src="main.js"></Script>
+
+</body>
