@@ -10,11 +10,12 @@ const ATTACK = document.querySelector(".Attack");
 const NOTE = document.getElementById("noteselector");
 const VOICE = document.getElementById("Voices");
 const WAVE = document.getElementById("Swaves");
+const LANGUAGE = document.getElementById("PLanguage");
 //const NOTE = document.getElementById("noteselector");
 //const NOTE = document.getElementById("noteselector");
 var command = "";
-var Language = "BASIC";
-var startregel = 10;
+var Language = LANGUAGE.value;
+var StartLine = 10;
 let attack = ATTACK.value;
 let sustain = SUSTAIN.value;
 let decay = DECAY.value;
@@ -23,6 +24,7 @@ var highbyte =0;
 var lowbyte=0;
 console.log()
 
+StartLine = parseInt(document.querySelector(".Startline").value)
 
 if (sustain > 240) {alert("ERROR SUSTAIN GREATER THAN 240");}
 if (release > 15) {alert("ERROR RELEASE GREATER THAN 15");}
@@ -115,57 +117,109 @@ switch(parseInt(NOTE.value)) {
 
 
   if (Language == "BASIC") {
-  command += (startregel + " poke 54296,15 \n");
-  startregel +=10;
+  command += (StartLine + " poke 54296,15 \n");
+  StartLine +=10;
 if (VOICE.value == "Voice1") 
 {
  
-  command += (startregel + " poke 54277," + (parseInt(attack) + parseInt(decay) )+ "\n");
-  startregel +=10;
-  command += (startregel + " poke 54273," + highbyte + "\n");
-  startregel +=10;
-  command += (startregel + " poke 54272," + lowbyte + "\n");
-  startregel +=10;
-  command += (startregel + " poke 54278," + (parseInt(sustain) + parseInt(release) )+ "\n");
-  startregel +=10;
-  command += (startregel + " poke 54276," + WAVE.value + "\n");
-  startregel +=10;
+  command += (StartLine + " poke 54277," + (parseInt(attack) + parseInt(decay) )+ "\n");
+  StartLine +=10;
+  command += (StartLine + " poke 54273," + highbyte + "\n");
+  StartLine +=10;
+  command += (StartLine + " poke 54272," + lowbyte + "\n");
+  StartLine +=10;
+  command += (StartLine + " poke 54278," + (parseInt(sustain) + parseInt(release) )+ "\n");
+  StartLine +=10;
+  command += (StartLine + " poke 54276," + WAVE.value + "\n");
+  StartLine +=10;
 }
 if (VOICE.value == "Voice2") 
 {
  
-  command += (startregel + " poke 54284," + (parseInt(attack) + parseInt(decay) )+ "\n");
-  startregel +=10;
-  command += (startregel + " poke 54280," + highbyte + "\n");
-  startregel +=10;
-  command += (startregel + " poke 54279," + lowbyte + "\n");
-  startregel +=10;
-  command += (startregel + " poke 54285," + (parseInt(sustain) + parseInt(release) )+ "\n");
-  startregel +=10;
-  command += (startregel + " poke 54283," + WAVE.value + "\n");
-  startregel +=10;
+  command += (StartLine + " poke 54284," + (parseInt(attack) + parseInt(decay) )+ "\n");
+  StartLine +=10;
+  command += (StartLine + " poke 54280," + highbyte + "\n");
+  StartLine +=10;
+  command += (StartLine + " poke 54279," + lowbyte + "\n");
+  StartLine +=10;
+  command += (StartLine + " poke 54285," + (parseInt(sustain) + parseInt(release) )+ "\n");
+  StartLine +=10;
+  command += (StartLine + " poke 54283," + WAVE.value + "\n");
+  StartLine +=10;
 }
 if (VOICE.value == "Voice3") 
 {
  
-  command += (startregel + " poke 54291," + (parseInt(attack) + parseInt(decay) )+ "\n");
-  startregel +=10;
-  command += (startregel + " poke 54287," + highbyte + "\n");
-  startregel +=10;
-  command += (startregel + " poke 54276," + lowbyte + "\n");
-  startregel +=10;
-  command += (startregel + " poke 54292," + (parseInt(sustain) + parseInt(release) )+ "\n");
-  startregel +=10;
-  command += (startregel + " poke 54290," + WAVE.value + "\n");
-  startregel +=10;
+  command += (StartLine + " poke 54291," + (parseInt(attack) + parseInt(decay) )+ "\n");
+  StartLine +=10;
+  command += (StartLine + " poke 54287," + highbyte + "\n");
+  StartLine +=10;
+  command += (StartLine + " poke 54276," + lowbyte + "\n");
+  StartLine +=10;
+  command += (StartLine + " poke 54292," + (parseInt(sustain) + parseInt(release) )+ "\n");
+  StartLine +=10;
+  command += (StartLine + " poke 54290," + WAVE.value + "\n");
+  StartLine +=10;
 }
 
 
 
 
 
+  }
+
+  if (Language == "ASM") {
+   //poke 54296,15
+   command+= "lda #15 \n"
+   command+= "sta 54296 \n"
+  
+    if (VOICE.value == "Voice1")
+  {
+   command += "lda #" + (parseInt(attack) + parseInt(decay) ) + "; Loads Attack and Decay into The A register \n";
+   command += "sta 54277 ;saves attack and decay \n";
+   command += "lda #" + highbyte + "; Loads the high byte into The A register \n";
+   command += "sta 54273 ;saves HighByte \n";
+   command += "lda #" + lowbyte + "; Loads the Low byte into The A register \n";
+   command += "sta 54272 ;saves LowByte \n";
+   command += "lda #" + (parseInt(sustain) + parseInt(release) ) + "; Loads Sustain and Release into The A register \n";
+   command += "sta 54278 ;saves Sustain and Release \n";
+   command += "lda #" + WAVE.value + ";loads wave form into The A register\n"
+   command += "sta 54276 ;Saves it to the waveform address"
+   
+  }
+  if (VOICE.value == "Voice2") 
+  {
+    command += "lda #" + (parseInt(attack) + parseInt(decay) ) + "; Loads Attack and Decay into The A register \n";
+    command += "sta 54284 ;saves attack and decay \n";
+    command += "lda #" + highbyte + "; Loads the high byte into The A register \n";
+    command += "sta 54280 ;saves HighByte \n";
+    command += "lda #" + lowbyte + "; Loads the Low byte into The A register \n";
+    command += "sta 54279 ;saves LowByte \n";
+    command += "lda #" + (parseInt(sustain) + parseInt(release) ) + "; Loads Sustain and Release into The A register \n";
+    command += "sta 54285 ;saves Sustain and Release \n";
+    command += "lda #" + WAVE.value + ";loads wave form into The A register\n"
+    command += "sta 54283 ;Saves it to the waveform address"
+    
+  }
+  if (VOICE.value == "Voice3") 
+  {
+    command += "lda #" + (parseInt(attack) + parseInt(decay) ) + "; Loads Attack and Decay into The A register \n";
+    command += "sta 54291 ;saves attack and decay \n";
+    command += "lda #" + highbyte + "; Loads the high byte into The A register \n";
+    command += "sta 54287 ;saves HighByte \n";
+    command += "lda #" + lowbyte + "; Loads the Low byte into The A register \n";
+    command += "sta 54276 ;saves LowByte \n";
+    command += "lda #" + (parseInt(sustain) + parseInt(release) ) + "; Loads Sustain and Release into The A register \n";
+    command += "sta 54292 ;saves Sustain and Release \n";
+    command += "lda #" + WAVE.value + ";loads wave form into The A register\n"
+    command += "sta 54290 ;Saves it to the waveform address"
+
+  }}
+
+  
+
 prompt("Copy to clipboard: Ctrl+C, Enter", command);
-  }
+}
 
 
 
@@ -176,7 +230,7 @@ prompt("Copy to clipboard: Ctrl+C, Enter", command);
 
 
 
-  }
+  
 
 
 
