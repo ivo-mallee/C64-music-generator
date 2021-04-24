@@ -9,7 +9,7 @@ const RELEASE = document.querySelector(".Release");
 const ATTACK = document.querySelector(".Attack");
 const NOTE = document.getElementById("noteselector");
 const VOICE = document.getElementById("Voices");
-const WAVE = document.getElementById("Swave");
+const WAVE = document.getElementById("Swaves");
 //const NOTE = document.getElementById("noteselector");
 //const NOTE = document.getElementById("noteselector");
 var command = "";
@@ -119,26 +119,52 @@ switch(parseInt(NOTE.value)) {
   startregel +=10;
 if (VOICE.value == "Voice1") 
 {
-  command += (startregel + " poke 54276," + VOICE.value + "\n");
+ 
+  command += (startregel + " poke 54277," + (parseInt(attack) + parseInt(decay) )+ "\n");
   startregel +=10;
-  command += (startregel + " poke 54296,15 \n");
+  command += (startregel + " poke 54273," + highbyte + "\n");
   startregel +=10;
-  command += (startregel + " poke 54296,15 \n");
+  command += (startregel + " poke 54272," + lowbyte + "\n");
   startregel +=10;
-  command += (startregel + " poke 54296,15 \n");
-
-
-
-
-
-
-
+  command += (startregel + " poke 54278," + (parseInt(sustain) + parseInt(release) )+ "\n");
+  startregel +=10;
+  command += (startregel + " poke 54276," + WAVE.value + "\n");
+  startregel +=10;
+}
+if (VOICE.value == "Voice2") 
+{
+ 
+  command += (startregel + " poke 54284," + (parseInt(attack) + parseInt(decay) )+ "\n");
+  startregel +=10;
+  command += (startregel + " poke 54280," + highbyte + "\n");
+  startregel +=10;
+  command += (startregel + " poke 54279," + lowbyte + "\n");
+  startregel +=10;
+  command += (startregel + " poke 54285," + (parseInt(sustain) + parseInt(release) )+ "\n");
+  startregel +=10;
+  command += (startregel + " poke 54283," + WAVE.value + "\n");
+  startregel +=10;
+}
+if (VOICE.value == "Voice3") 
+{
+ 
+  command += (startregel + " poke 54291," + (parseInt(attack) + parseInt(decay) )+ "\n");
+  startregel +=10;
+  command += (startregel + " poke 54287," + highbyte + "\n");
+  startregel +=10;
+  command += (startregel + " poke 54276," + lowbyte + "\n");
+  startregel +=10;
+  command += (startregel + " poke 54292," + (parseInt(sustain) + parseInt(release) )+ "\n");
+  startregel +=10;
+  command += (startregel + " poke 54290," + WAVE.value + "\n");
+  startregel +=10;
 }
 
 
 
 
-alert(command);
+
+prompt("Copy to clipboard: Ctrl+C, Enter", command);
   }
 
 
